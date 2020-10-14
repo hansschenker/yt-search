@@ -1,0 +1,43 @@
+<h3>Hans Youtube Playlists</h3>
+<!-- <ng-container *ngIf="playlists$ | async as playlists"> -->
+<ng-container *ngIf="playlists">
+  <pre>
+    <!-- {{ playlists$ | async | json }} -->
+  </pre>
+  <h4>
+    Playlists:
+    {{ playlists }}
+    {{ playlists.length }}
+  </h4>
+  <h4>
+    Loaded Playlists:
+    <ul>
+      <li *ngFor="let list of playlistsLoaded">
+        <ul>
+          <li *ngFor="let item of list.items">
+            {{ item.snippet.title }}
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </h4>
+  <div>page token: {{ nextPage }}</div>
+  <div>page loaded: {{ pageListsLoadedCount * 50 }}</div>
+  <div>playlists loaded: {{ pageListsLoadedCount }}</div>
+  <div>
+    <button (click)="getNextPage()">Get next page</button>
+  </div>
+  <pre>
+    <!-- {{ playlists | json }} -->
+  </pre>
+  <ul>
+    <li *ngFor="let playlist of playlists['items']">
+      <!-- {{ playlist["id"]["playlistId"] }} -->
+
+      {{ playlist["snippet"]["title"] }}
+
+      <!-- {{ playlist["default"]["url"] }}m -->
+    </li>
+  </ul>
+</ng-container>
+<router-outlet></router-outlet>
